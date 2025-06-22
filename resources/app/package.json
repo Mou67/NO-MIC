@@ -1,0 +1,23 @@
+{
+  "name": "MIC-LES-TTS",
+  "version": "1.0.1",
+  "description": "Moderne Text-to-Speech Anwendung mit Gaming-Integration",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . --disable-gpu-cache --no-sandbox",
+    "gaming": "electron main-game.js --disable-gpu-cache --no-sandbox"
+  },
+  "keywords": [
+    "tts",
+    "text-to-speech",
+    "voice",
+    "electron",
+    "gaming"
+  ],
+  "author": "Mou67",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-packager": "^17.1.2"
+  }
+}

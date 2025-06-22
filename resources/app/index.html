@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="app.title">MIC-LES</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Custom Title Bar -->
+    <div class="title-bar">
+        <div class="title-bar-left">
+            <div class="app-icon">
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <span class="app-title">MIC-LES</span>
+        </div>
+        <div class="title-bar-controls">
+            <button class="title-bar-button" id="minimize-btn">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="title-bar-button" id="maximize-btn">
+                <i class="fas fa-square"></i>
+            </button>
+            <button class="title-bar-button close" id="close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="main-title">
+                    <i class="fas fa-microphone-slash"></i>
+                    Text zu Sprache
+                </h1>
+                <p class="subtitle">Verwandeln Sie Ihren Text in natürliche Sprache</p>
+            </div>
+            <div class="header-animation">
+                <div class="sound-wave">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+        </header>        <!-- Main Interface -->
+        <main class="main-content">
+            <!-- Language Selection -->
+            <section class="language-section">
+                <h2 class="section-title">
+                    <i class="fas fa-globe"></i>
+                    <span data-i18n="app.language">Sprache</span>
+                </h2>
+                <div class="language-controls">
+                    <div class="control-group">
+                        <label for="languageSelect" data-i18n="app.language">UI Sprache</label>
+                        <select id="languageSelect" class="language-select">
+                            <!-- Populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="autoLanguageDetection" checked>
+                            <span data-i18n="app.auto_language">Automatische Spracherkennung</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Voice Selection -->
+            <section class="voice-section">
+                <h2 class="section-title">
+                    <i class="fas fa-user-friends"></i>
+                    <span data-i18n="app.voice">Stimme auswählen</span>
+                </h2>
+                <div class="voice-grid" id="voiceGrid">
+                    <!-- Voices will be populated by JavaScript -->
+                </div>
+            </section>            <!-- Text Input -->
+            <section class="text-section">
+                <h2 class="section-title">
+                    <i class="fas fa-keyboard"></i>
+                    <span data-i18n="app.text">Text eingeben</span>
+                </h2>
+                <div class="text-input-container">
+                    <textarea 
+                        id="textInput" 
+                        data-i18n="app.placeholder"
+                        placeholder="Geben Sie hier Ihren Text ein, den Sie sprechen lassen möchten..."
+                        maxlength="1000"
+                    ></textarea>
+                    <div class="text-info">
+                        <span class="char-count">
+                            <span id="charCount">0</span>/1000 Zeichen
+                        </span>
+                    </div>
+                </div>
+            </section>            <!-- Controls -->
+            <section class="controls-section">
+                <div class="controls-grid">
+                    <!-- Speech Controls -->
+                    <div class="control-group">
+                        <h3 class="control-title" data-i18n="app.rate">Geschwindigkeit</h3>
+                        <div class="slider-container">
+                            <input type="range" id="speedSlider" min="0.5" max="2" step="0.1" value="1" class="slider">
+                            <div class="slider-labels">
+                                <span>Langsam</span>
+                                <span id="speedValue">1.0x</span>
+                                <span>Schnell</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3 class="control-title" data-i18n="app.pitch">Tonhöhe</h3>
+                        <div class="slider-container">
+                            <input type="range" id="pitchSlider" min="0.5" max="2" step="0.1" value="1" class="slider">
+                            <div class="slider-labels">
+                                <span>Tief</span>
+                                <span id="pitchValue">1.0x</span>
+                                <span>Hoch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3 class="control-title" data-i18n="app.volume">Lautstärke</h3>
+                        <div class="slider-container">
+                            <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1" class="slider">
+                            <div class="slider-labels">
+                                <span>Leise</span>
+                                <span id="volumeValue">100%</span>
+                                <span>Laut</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="action-section">
+                <div class="action-buttons">                    <button id="speakBtn" class="action-btn primary">
+                        <i class="fas fa-play"></i>
+                        <span data-i18n="app.speak">Sprechen</span>
+                    </button>
+                    <button id="pauseBtn" class="action-btn secondary" disabled>
+                        <i class="fas fa-pause"></i>
+                        <span data-i18n="app.pause">Pausieren</span>
+                    </button>
+                    <button id="stopBtn" class="action-btn secondary" disabled>
+                        <i class="fas fa-stop"></i>
+                        <span data-i18n="app.stop">Stoppen</span>
+                    </button>
+                    <button id="clearBtn" class="action-btn danger">
+                        <i class="fas fa-trash"></i>
+                        <span data-i18n="app.clear">Löschen</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Gaming Features -->
+            <section class="gaming-section">
+                <h2 class="section-title">
+                    <i class="fas fa-gamepad"></i>
+                    <span data-i18n="app.gaming_mode">Gaming Integration</span>
+                </h2>
+                <div class="gaming-features">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <h3 data-i18n="app.overlay">Overlay-Modus</h3>
+                            <button id="overlayToggleBtn" class="feature-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                                <span>Aktivieren</span>
+                            </button>
+                        </div>
+                        <p>Kompakte Overlay-Ansicht für In-Game-Nutzung</p>
+                        <div class="hotkey-info">
+                            <span data-i18n="hotkeys.toggle_overlay"><strong>F9:</strong> Overlay umschalten</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <h3 data-i18n="app.hotkeys">Schnell-Hotkeys</h3>
+                            <div class="hotkey-status">
+                                <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
+                                Aktiv
+                            </div>
+                        </div>
+                        <p>Globale Tastenkürzel für schnelle TTS-Nutzung</p>
+                        <div class="hotkeys-list">                            <div class="hotkey-item">
+                                <span class="hotkey"><strong>F10:</strong></span>
+                                <span data-i18n="hotkeys.speak_text">Schnell sprechen</span>
+                            </div>
+                            <div class="hotkey-item">
+                                <span class="hotkey"><strong>F11:</strong></span>
+                                <span data-i18n="hotkeys.stop_speech">Stoppen</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <h3>Game Integration API</h3>
+                            <button id="apiInfoBtn" class="feature-btn">
+                                <i class="fas fa-code"></i>
+                                API Info
+                            </button>
+                        </div>
+                        <p>JavaScript API für Spiele und Anwendungen</p>
+                        <div class="api-preview">
+                            <code>window.gameTTS.speak("Hello World!");</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- App Info Section -->
+            <section class="app-info-section">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    <span data-i18n="app.about">Über diese App</span>
+                </h2>
+                <div class="app-info-content">
+                    <div class="app-logo">
+                        <div class="logo-container">
+                            <i class="fas fa-microphone-slash"></i>
+                            <span class="app-name">MIC-LES TTS</span>
+                            <span class="app-version">v1.0.0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="app-features">
+                        <h3 data-i18n="app.features">Was kann diese App?</h3>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-globe"></i>
+                                <div class="feature-text">
+                                    <strong data-i18n="features.multilingual">Mehrsprachig</strong>
+                                    <span data-i18n="features.multilingual_desc">UI in Deutsch, Englisch, Französisch</span>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-brain"></i>
+                                <div class="feature-text">
+                                    <strong data-i18n="features.auto_detection">Intelligente Erkennung</strong>
+                                    <span data-i18n="features.auto_detection_desc">Automatische Spracherkennung für optimale TTS</span>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-gamepad"></i>
+                                <div class="feature-text">
+                                    <strong data-i18n="features.gaming">Gaming-Optimiert</strong>
+                                    <span data-i18n="features.gaming_desc">Overlay-Modus mit globalen Hotkeys</span>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-microphone"></i>
+                                <div class="feature-text">
+                                    <strong data-i18n="features.voices">10+ Sprachen</strong>
+                                    <span data-i18n="features.voices_desc">Unterstützt alle Windows TTS-Stimmen</span>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-sliders-h"></i>
+                                <div class="feature-text">
+                                    <strong data-i18n="features.customizable">Anpassbar</strong>
+                                    <span data-i18n="features.customizable_desc">Geschwindigkeit, Tonhöhe, Lautstärke</span>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-rocket"></i>
+                                <div class="feature-text">
+                                    <strong data-i18n="features.portable">Portabel</strong>
+                                    <span data-i18n="features.portable_desc">Keine Installation erforderlich</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="app-footer">
+                        <div class="developer-info">
+                            <span data-i18n="app.developed_by">Entwickelt von</span> <strong>Mou67</strong>
+                        </div>
+                        <div class="tech-info">
+                            <span data-i18n="app.built_with">Erstellt mit</span> Electron, JavaScript & CSS
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Display -->
+            <section class="status-section">
+                <div class="status-display" id="statusDisplay">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Bereit zum Sprechen</span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Stimmen werden geladen...</p>
+        </div>
+    </div>
+
+    <script src="localization.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

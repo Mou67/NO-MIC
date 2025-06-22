@@ -1,0 +1,72 @@
+{
+  "app": {
+    "title": "Text-to-Speech Application",
+    "language": "Language",
+    "voice": "Voice",
+    "text": "Text",
+    "placeholder": "Enter your text here...",
+    "rate": "Rate",
+    "pitch": "Pitch",
+    "volume": "Volume",
+    "speak": "Speak",
+    "stop": "Stop",
+    "pause": "Pause",
+    "resume": "Resume",
+    "clear": "Clear",
+    "overlay": "Overlay",
+    "settings": "Settings",
+    "hotkeys": "Hotkeys",
+    "gaming_mode": "Gaming Mode",    "auto_language": "Auto Language Detection",
+    "save_settings": "Save Settings",
+    "reset_settings": "Reset Settings",
+    "about": "About this App"
+  },
+  "hotkeys": {
+    "toggle_overlay": "F9 - Toggle Overlay",
+    "speak_text": "F10 - Speak Text",
+    "stop_speech": "F11 - Stop Speech"
+  },  "overlay": {
+    "title": "TTS Overlay",
+    "quick_text": "Quick text (F10 to speak)...",
+    "quick_phrases": "Quick Phrases",
+    "chat_to_speech": "Chat-to-Speech",
+    "filter_profanity": "Filter profanity",
+    "auto_speak": "Auto-speak"
+  },
+  "messages": {
+    "no_voices": "No voices available",
+    "text_required": "Please enter text",
+    "settings_saved": "Settings saved",
+    "language_changed": "Language changed",
+    "voice_not_available": "Voice not available",
+    "error_occurred": "An error occurred",
+    "speaking": "Speaking...",
+    "speech_ended": "Speech output ended",
+    "paused": "Paused"
+  },  "languages": {
+    "de": "German",
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "ru": "Russian",
+    "zh": "Chinese",
+    "ja": "Japanese",
+    "ko": "Korean"
+  },
+  "features": {
+    "multilingual": "Multilingual",
+    "multilingual_desc": "UI in German, English, French",
+    "auto_detection": "Smart Detection",
+    "auto_detection_desc": "Automatic language detection for optimal TTS",
+    "gaming": "Gaming-Optimized",
+    "gaming_desc": "Overlay mode with global hotkeys",
+    "voices": "10+ Languages",
+    "voices_desc": "Supports all Windows TTS voices",
+    "customizable": "Customizable",
+    "customizable_desc": "Speed, pitch, volume",
+    "portable": "Portable",
+    "portable_desc": "No installation required"
+  }
+}

@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --accent-color: #06d6a0;
+    --danger-color: #ef4444;
+    --success-color: #10b981;
+    
+    --bg-overlay: rgba(26, 26, 46, 0.95);
+    --bg-card: rgba(30, 30, 46, 0.9);
+    --bg-input: rgba(22, 33, 62, 0.8);
+    --bg-hover: rgba(42, 42, 62, 0.9);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    
+    --border-color: rgba(55, 65, 81, 0.6);
+    --border-hover: rgba(75, 85, 99, 0.8);
+    
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 14px;
+    user-select: none;
+    overflow: hidden;
+}
+
+.overlay-container {
+    width: 400px;
+    background: var(--bg-overlay);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Header */
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    cursor: move;
+    -webkit-app-region: drag;
+}
+
+.overlay-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--primary-color);
+}
+
+.overlay-controls {
+    display: flex;
+    gap: 4px;
+    -webkit-app-region: no-drag;
+}
+
+.overlay-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: all 0.2s ease;
+}
+
+.overlay-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.overlay-btn.close:hover {
+    background: var(--danger-color);
+    color: white;
+}
+
+/* Quick Input */
+.quick-input-section {
+    padding: 12px;
+}
+
+.input-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+#quickText {
+    flex: 1;
+    padding: 8px 10px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+#quickText:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+#quickText::placeholder {
+    color: var(--text-muted);
+}
+
+.quick-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-btn.speak {
+    background: var(--primary-color);
+    color: white;
+}
+
+.quick-btn.speak:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+.quick-btn.stop {
+    background: var(--danger-color);
+    color: white;
+}
+
+.quick-btn.stop:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+.quick-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Voice Quick Select */
+.voice-quick-select {
+    padding: 0 12px 8px;
+    max-height: 60px;
+    overflow-y: auto;
+}
+
+.voice-quick-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 12px;
+}
+
+.voice-quick-item:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-hover);
+}
+
+.voice-quick-item.selected {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.voice-name-quick {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 11px;
+}
+
+.voice-lang-quick {
+    font-size: 10px;
+    color: var(--text-secondary);
+}
+
+/* Status Bar */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    font-size: 11px;
+}
+
+.status-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+}
+
+.status-info.speaking {
+    color: var(--success-color);
+}
+
+.status-info.error {
+    color: var(--danger-color);
+}
+
+.hotkeys-info {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+/* Chat Section */
+.chat-section {
+    padding: 8px 12px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-card);
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.chat-header h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.toggle-btn.active {
+    color: var(--success-color);
+}
+
+.chat-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chat-filters label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.chat-filters input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+    accent-color: var(--primary-color);
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.speaking {
+    animation: pulse 1s infinite;
+}
+
+/* Scrollbar */
+.voice-quick-select::-webkit-scrollbar {
+    width: 4px;
+}
+
+.voice-quick-select::-webkit-scrollbar-track {
+    background: var(--bg-input);
+}
+
+.voice-quick-select::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 2px;
+}
+
+.voice-quick-select::-webkit-scrollbar-thumb:hover {
+    background: var(--border-hover);
+}
+
+/* Responsive for smaller overlays */
+@media (max-width: 450px) {
+    .overlay-container {
+        width: 350px;
+    }
+    
+    .hotkeys-info {
+        display: none;
+    }
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
+}
+
+/* Selection */
+::selection {
+    background: rgba(99, 102, 241, 0.3);
+}

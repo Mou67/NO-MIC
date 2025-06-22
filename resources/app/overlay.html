@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="overlay.title">TTS Overlay</title>
+    <link rel="stylesheet" href="overlay.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="overlay-container">
+        <!-- Compact Header -->
+        <div class="overlay-header">
+            <div class="overlay-title">
+                <i class="fas fa-microphone-slash"></i>
+                <span>TTS</span>
+            </div>
+            <div class="overlay-controls">
+                <button class="overlay-btn" id="expandBtn" title="Vollmodus (F9)">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="overlay-btn close" id="closeBtn" title="Schließen">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Quick Input -->
+        <div class="quick-input-section">
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="quickText" 
+                    data-i18n="overlay.quick_text"
+                    placeholder="Schnelltext (F10 zum Sprechen)..."
+                    maxlength="200"
+                    autofocus
+                >
+                <button class="quick-btn speak" id="quickSpeakBtn" title="Sprechen (F10)">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="quick-btn stop" id="quickStopBtn" title="Stoppen (F11)">
+                    <i class="fas fa-stop"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Voice Quick Select -->
+        <div class="voice-quick-select" id="voiceQuickSelect">
+            <!-- Voices will be populated by JavaScript -->
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar" id="statusBar">
+            <div class="status-info">
+                <span id="statusText">Bereit</span>
+            </div>
+            <div class="hotkeys-info">
+                <span>F9: Vollmodus | F10: Sprechen | F11: Stopp</span>
+            </div>
+        </div>        <!-- Game Chat Integration -->
+        <div class="chat-section" id="chatSection" style="display: none;">
+            <div class="chat-header">
+                <h4 data-i18n="overlay.chat_to_speech">Chat-to-Speech</h4>
+                <button class="toggle-btn" id="chatToggleBtn">
+                    <i class="fas fa-toggle-off"></i>
+                </button>
+            </div>
+            <div class="chat-filters">
+                <label>
+                    <input type="checkbox" id="filterProfanity" checked>
+                    <span data-i18n="overlay.filter_profanity">Schimpfwörter filtern</span>
+                </label>
+                <label>
+                    <input type="checkbox" id="autoSpeak">
+                    <span data-i18n="overlay.auto_speak">Auto-Sprechen</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script src="localization.js"></script>
+    <script src="overlay.js"></script>
+</body>
+</html>

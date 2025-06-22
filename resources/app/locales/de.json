@@ -1,0 +1,72 @@
+{
+  "app": {
+    "title": "Text-to-Speech Anwendung",
+    "language": "Sprache",
+    "voice": "Stimme",
+    "text": "Text",
+    "placeholder": "Geben Sie hier Ihren Text ein...",
+    "rate": "Geschwindigkeit",
+    "pitch": "Tonhöhe",
+    "volume": "Lautstärke",
+    "speak": "Sprechen",
+    "stop": "Stoppen",
+    "pause": "Pausieren",
+    "resume": "Fortsetzen",
+    "clear": "Löschen",
+    "overlay": "Overlay",
+    "settings": "Einstellungen",
+    "hotkeys": "Tastenkürzel",
+    "gaming_mode": "Gaming-Modus",    "auto_language": "Automatische Spracherkennung",
+    "save_settings": "Einstellungen speichern",
+    "reset_settings": "Zurücksetzen",
+    "about": "Über diese App"
+  },
+  "hotkeys": {
+    "toggle_overlay": "F9 - Overlay umschalten",
+    "speak_text": "F10 - Text sprechen",
+    "stop_speech": "F11 - Sprache stoppen"
+  },  "overlay": {
+    "title": "TTS Overlay",
+    "quick_text": "Schnelltext (F10 zum Sprechen)...",
+    "quick_phrases": "Schnellphrasen",
+    "chat_to_speech": "Chat-to-Speech",
+    "filter_profanity": "Schimpfwörter filtern",
+    "auto_speak": "Auto-Sprechen"
+  },
+  "messages": {
+    "no_voices": "Keine Stimmen verfügbar",
+    "text_required": "Bitte geben Sie Text ein",
+    "settings_saved": "Einstellungen gespeichert",
+    "language_changed": "Sprache geändert",
+    "voice_not_available": "Stimme nicht verfügbar",
+    "error_occurred": "Ein Fehler ist aufgetreten",
+    "speaking": "Spreche...",
+    "speech_ended": "Sprachausgabe beendet",
+    "paused": "Pausiert"
+  },  "languages": {
+    "de": "Deutsch",
+    "en": "Englisch",
+    "fr": "Französisch",
+    "es": "Spanisch",
+    "it": "Italienisch",
+    "pt": "Portugiesisch",
+    "ru": "Russisch",
+    "zh": "Chinesisch",
+    "ja": "Japanisch",
+    "ko": "Koreanisch"
+  },
+  "features": {
+    "multilingual": "Mehrsprachig",
+    "multilingual_desc": "UI in Deutsch, Englisch, Französisch",
+    "auto_detection": "Intelligente Erkennung",
+    "auto_detection_desc": "Automatische Spracherkennung für optimale TTS",
+    "gaming": "Gaming-Optimiert",
+    "gaming_desc": "Overlay-Modus mit globalen Hotkeys",
+    "voices": "10+ Sprachen",
+    "voices_desc": "Unterstützt alle Windows TTS-Stimmen",
+    "customizable": "Anpassbar",
+    "customizable_desc": "Geschwindigkeit, Tonhöhe, Lautstärke",
+    "portable": "Portabel",
+    "portable_desc": "Keine Installation erforderlich"
+  }
+}
